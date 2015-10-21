@@ -103,6 +103,7 @@ private:
     struct LoadedState;
     struct LoadedToIdleState;
     struct IdleToExecutingState;
+    struct FatalError;
     struct ExecutingState;
     struct OutputPortSettingsChangedState;
     struct ExecutingToIdleState;

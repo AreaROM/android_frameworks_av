@@ -455,7 +455,7 @@ ACodec::ACodec()
       mSentFormat(false),
       mIsEncoder(false),
       mUseMetadataOnEncoderOutput(false),
-      mFatalError(false),
+      //mFatalError(false),
       mShutdownInProgress(false),
       mExplicitShutdown(false),
       mEncoderDelay(0),
@@ -1007,10 +1007,10 @@ ACodec::BufferInfo *ACodec::dequeueBufferFromNativeWindow() {
         return NULL;
     }
 
-    if (mFatalError) {
+    /*if (mFatalError) {
         ALOGW("not dequeuing from native window due to fatal error");
         return NULL;
-    }
+    }*/
 
     if (native_window_dequeue_buffer_and_wait(mNativeWindow.get(), &buf) != 0) {
         ALOGE("dequeueBuffer failed.");
@@ -4114,7 +4114,7 @@ void ACodec::signalError(OMX_ERRORTYPE error, status_t internalError) {
         }
     }
 
-    mFatalError = true;
+    //mFatalError = true;
 
     notify->setInt32("err", internalError);
     notify->setInt32("actionCode", ACTION_CODE_FATAL); // could translate from OMX error.
